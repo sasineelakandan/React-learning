@@ -5,8 +5,8 @@ const Footer = ({length}) => {
   return (
     
     
-    <div>
-        <footer> {length} list items  </footer>
+    <div className='footer' >
+        <footer > {length} list items  </footer>
     </div>
   )
 }

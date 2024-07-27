@@ -18,7 +18,7 @@ function App() {
    const id=items.length? items[items.length-1].id+1:1
    console.log('new',id)
    const addNewItem={id,cheked:false,item}
-   const listItems=[addNewItem,...items]
+   const listItems=[...items,addNewItem]
    console.log('new',listItems)
    setitem(listItems)
   }

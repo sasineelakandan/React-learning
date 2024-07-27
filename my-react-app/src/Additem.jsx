@@ -4,7 +4,7 @@ const Additem = ({newItem,setnewItem,handleevent}) => {
   return (
     <div>
         <form className='addForm' onSubmit={handleevent}>
-          <label>Add Item</label>
+         
           <input 
           autoFocus
           id='addItem'
