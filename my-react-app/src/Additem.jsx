@@ -8,8 +8,8 @@ const Additem = ({newItem,setnewItem,handleevent}) => {
           <input 
           autoFocus
           id='addItem'
-          text='text'
-          placeholder='Add Item'
+          
+          placeholder='Add Items'
           required
           value={newItem}
           onChange={(e)=>setnewItem(e.target.value)}

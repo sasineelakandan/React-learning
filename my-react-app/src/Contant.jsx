@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Itemlist from './itemlist'
+import SearchItems from './SearchItems'
 
   
 const Contant = ({items,handlecheck,handledelete}) => {

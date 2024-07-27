@@ -5,14 +5,16 @@ import Footer from './Footer'
 import { useState } from 'react'
 import Header from './Header'
 import Additem from './Additem'
-
+import { useEffect } from 'react'
+import SearchItems from './SearchItems'
 function App() {
-  const [items,setitem]=useState([
-    {id:1,cheked:true,item:'Go to the Gym Morning'},
-    {id:2,cheked:false,item:'Go to the Hub Morning'},
-    {id:3,cheked:false,item:'Return to the Hub Evenig'}
-  ])
+  const [items, setitem] = useState(JSON.parse(localStorage.getItem('todo_list')) || []);
   const [newItem,setnewItem]=useState('')
+  const [searchItem,setsearchItem]=useState('')
+  useEffect(() => {
+    localStorage.setItem('todo_list', JSON.stringify(items));
+  }, [items]);
+
 
   function addItem(item){
    const id=items.length? items[items.length-1].id+1:1
@@ -24,12 +26,14 @@ function App() {
   }
   function handlecheck(id){
    const listItems=items.map((item)=>item.id===id ? {...item,cheked:!item.cheked}:item)
+   setitem(listItems) 
+  localStorage.setItem("todo_list",JSON.stringify(listItems))
    
-   setitem(listItems)
   }
   function handledelete(id){
   const listItems=items.filter((item)=>item.id!==id)
   setitem(listItems)
+  localStorage.setItem('todo-list',JSON.stringify(listItems))
   }
   function handleevent(e){
     e.preventDefault()
@@ -45,7 +49,11 @@ function App() {
     setnewItem={setnewItem}
     handleevent={handleevent}
     />
-    <Contant items={items} handlecheck={handlecheck} handledelete={handledelete} />
+    <SearchItems 
+    searchItem={searchItem}
+    setsearchItem={setsearchItem}
+    />
+    <Contant items={items.filter((item)=>(item.item).toLowerCase().includes(searchItem.toLowerCase()))} handlecheck={handlecheck} handledelete={handledelete} />
     <Footer length={items.length} />
     </div>  
   )
