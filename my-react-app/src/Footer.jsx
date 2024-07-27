@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Footer = () => {
-    let year=new Date()
+const Footer = ({length}) => {
+   
   return (
     
     
     <div>
-        <footer> Copy &copy; {year.getFullYear()}  </footer>
+        <footer> {length} list items  </footer>
     </div>
   )
 }
